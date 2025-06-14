@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+    reactStrictMode: true,
+    env: {
+        TASTECOMPASS_BACKEND_URL: process.env.TASTECOMPASS_BACKEND_URL!,
+    },
 };
 
 export default nextConfig;
