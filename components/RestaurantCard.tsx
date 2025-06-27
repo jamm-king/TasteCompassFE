@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { Wifi, Car } from 'lucide-react';
 import { Restaurant } from '@/types/Restaurant';
+import { saveRecentRestaurant } from '@/utils/recentRestaurants';
 
 const PRICE_FORMATTER = new Intl.NumberFormat('ko-KR');
 
@@ -31,9 +32,25 @@ const RestaurantCard: FC<Restaurant> = ({
     return (
         <Link
             href={`/restaurant/${id}`}
+            onClick={() => saveRecentRestaurant({
+                id,
+                name,
+                address,
+                category,
+                phone,
+                businessDays,
+                hasWifi,
+                hasParking,
+                menus,
+                minPrice,
+                maxPrice,
+                taste,
+                mood
+            })}
             className="block bg-surface rounded-lg shadow p-4 hover:shadow-lg transition-shadow"
         >
-            <div className="flex space-x-4">
+
+        <div className="flex space-x-4">
                 <div className="flex-grow flex flex-col justify-between">
                     <div>
                         <h3 className="text-lg font-semibold text-foreground mb-1">{name}</h3>
